@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@color/MainBgColor">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/sidebar"
+        android:layout_width="65dp"
+        android:layout_height="0dp"
+        android:background="@color/AsideBgColor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/main_sidebar_text"
+            android:layout_width="100dp"
+            android:layout_height="145dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:gravity="center"
+            android:rotation="270"
+            android:text="@string/main_scene_text"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@id/about_sidebar_text"
+            app:layout_constraintEnd_toEndOf="@id/sidebar"
+            app:layout_constraintStart_toStartOf="@id/sidebar" />
+        <TextView
+            android:id="@+id/about_sidebar_text"
+            android:layout_width="100dp"
+            android:layout_height="145dp"
+            android:fontFamily="@font/montserrat"
+            android:gravity="center"
+            android:rotation="270"
+            android:text="@string/about_text"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="@id/sidebar"
+            app:layout_constraintEnd_toEndOf="@id/sidebar"
+            app:layout_constraintTop_toBottomOf="@id/main_sidebar_text" />
+        <TextView
+            android:id="@+id/contacts_sidebar_text"
+            android:layout_width="100dp"
+            android:layout_height="145dp"
+            android:fontFamily="@font/montserrat"
+            android:gravity="center"
+            android:rotation="270"
+            android:layout_marginBottom="150dp"
+            android:text="@string/Contacts_text"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="@id/sidebar"
+            app:layout_constraintEnd_toEndOf="@id/sidebar"
+            app:layout_constraintTop_toBottomOf="@id/about_sidebar_text"
+            app:layout_constraintBottom_toTopOf="@id/sidebar_icon"/>
+
+        <ImageView
+            android:id="@+id/sidebar_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:contentDescription="@string/sidebar_icon_description"
+            android:src="@drawable/ic_hot_deal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/sidebar"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/title_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_text_1"
+        android:textSize="40sp"
+        android:textColor="@color/black"
+        android:layout_marginTop="60dp"
+        android:layout_marginStart="40dp"
+        app:layout_constraintStart_toEndOf="@id/sidebar"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_text_2"
+        android:textSize="40sp"
+        android:fontFamily="@font/montserrat_bold"
+        android:textColor="@color/TitleText2"
+        android:layout_marginTop="60dp"
+        android:layout_marginStart="15dp"
+        app:layout_constraintStart_toEndOf="@id/title_1"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
