@@ -6,4 +6,6 @@
     <string name="Contacts_text">Контакты</string>
     <string name="title_text_1">Courses</string>
     <string name="title_text_2">App</string>
+    <string name="setting_icon_descr">setting_icon</string>
+    <string name="category_bg_desc">фон категории</string>
 </resources>
