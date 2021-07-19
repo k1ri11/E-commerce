@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".activity_course_page"
     android:background="@color/black"
+    android:id="@+id/course_page__course_bg"
     >
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -76,10 +77,11 @@
         android:id="@+id/course_page__course_img"
         android:layout_width="0dp"
         android:layout_height="230dp"
-        android:scaleType="centerCrop"
         android:contentDescription="@string/product_icon_dscr"
-        app:layout_constraintStart_toEndOf="@id/sidebar"
+        android:scaleType="centerCrop"
+        android:transitionName="courseImage"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/sidebar"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_java" />
 
@@ -103,6 +105,7 @@
         android:id="@+id/card_bg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:cardElevation="0dp"
         app:cardBackgroundColor="@android:color/transparent"
         app:layout_constraintStart_toEndOf="@id/sidebar"
         app:layout_constraintTop_toBottomOf="@id/course_page__title"
@@ -118,11 +121,12 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:layout_width="100dp"
+                    android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:textColor="@color/white"
                     android:textSize="14sp"
-                    android:layout_margin="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
                     android:gravity="center"
                     android:fontFamily="@font/montserrat"
                     android:text="@string/start_learning" />
@@ -133,7 +137,7 @@
                     android:textColor="@color/white"
                     android:textSize="14sp"
                     android:layout_marginTop="20dp"
-                    android:layout_marginStart="15dp"
+                    android:layout_marginStart="25dp"
                     android:fontFamily="@font/montserrat"
                     android:text="@string/level"/>
 
@@ -141,19 +145,19 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="100">
+                android:layout_height="wrap_content">
 
                 <TextView
                     android:id="@+id/course_page__date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/white"
-                    android:textSize="14sp"
                     android:layout_margin="10dp"
-                    android:layout_weight="40"
+                    android:layout_marginStart="20dp"
                     android:fontFamily="@font/montserrat_bold"
-                    tools:text="разработка"/>
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:textSize="14sp"
+                    tools:text="1 января" />
 
                 <TextView
                     android:id="@+id/course_page__level"
@@ -163,9 +167,8 @@
                     android:textSize="14sp"
                     android:layout_marginTop="10dp"
                     android:layout_marginStart="25dp"
-                    android:layout_weight="40"
                     android:fontFamily="@font/montserrat_bold"
-                    tools:text="разработка"/>
+                    tools:text="начинающий"/>
 
             </LinearLayout>
 

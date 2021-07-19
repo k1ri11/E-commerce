@@ -30,7 +30,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/product_icon_dscr"
-                app:srcCompat="@drawable/ic_java"/>
+                android:transitionName="courseImage"
+                app:srcCompat="@drawable/ic_java" />
 
             <TextView
                 android:id="@+id/product_title"
