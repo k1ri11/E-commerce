@@ -1,10 +1,10 @@
 package com.example.e_commerce.model;
 
 public class Course {
-    int id;
+    int id, category;
     String img, title, date, level, bgColor, text1, text2;
 
-    public Course(int id, String img, String title, String date, String level, String bgColor, String text1, String text2) {
+    public Course(int id, String img, String title, String date, String level, String bgColor, String text1, String text2, int category) {
         this.id = id;
         this.img = img;
         this.title = title;
@@ -13,6 +13,15 @@ public class Course {
         this.bgColor = bgColor;
         this.text1 = text1;
         this.text2 = text2;
+        this.category = category;
+    }
+
+    public int getCategory() {
+        return category;
+    }
+
+    public void setCategory(int category) {
+        this.category = category;
     }
 
     public String getText2() {

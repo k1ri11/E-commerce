@@ -27,6 +27,6 @@
         app:layout_constraintBottom_toBottomOf="@id/category_bg"
         app:layout_constraintStart_toStartOf="@id/category_bg"
         app:layout_constraintEnd_toEndOf="@id/category_bg"
-       tools:text="игры"/>
+       tools:text="Все"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
