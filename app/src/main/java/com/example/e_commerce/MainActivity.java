@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.animation.ValueAnimator;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -44,11 +45,11 @@ public class MainActivity extends AppCompatActivity {
 
         setCategoryRV(categoryList);
         courseList.add( new Course(1, "java", "Профессия Java\nразработчик", "1 Января", "начальный", "#424345", getResources().getString(R.string.course_page__course_desc) , getResources().getString(R.string.course_page__course_desc_2), 3));
-        courseList.add( new Course(1, "python", "Профессия Python\nразработчик", "20 Февраля", "начальный", "#9FA52D", getResources().getString(R.string.course_page__course_desc) , getResources().getString(R.string.course_page__course_desc_2), 3));
-        courseList.add( new Course(1, "back_end", "Профессия Back-End\nразработчик", "25 Мая", "средний", "#4476D6", getResources().getString(R.string.course_page__course_desc) , getResources().getString(R.string.course_page__course_desc_2),2));
-        courseList.add( new Course(1, "front_end", "Профессия Front-End\nразработчик", "8 Июня", "начальный", "#F16A51", getResources().getString(R.string.course_page__course_desc) , getResources().getString(R.string.course_page__course_desc_2), 2));
-        courseList.add( new Course(1, "full_stack", "Профессия Full-Stack\nразработчик", "1 Сентября", "средний", "#0D0F29",getResources().getString(R.string.course_page__course_desc) , getResources().getString(R.string.course_page__course_desc_2), 2));
-        courseList.add( new Course(1, "unity", "Профессия Unity\nразработчик", "25 Ноября", "начальный", "#FD896A", getResources().getString(R.string.course_page__course_desc) , getResources().getString(R.string.course_page__course_desc_2),1));
+        courseList.add( new Course(2, "python", "Профессия Python\nразработчик", "20 Февраля", "начальный", "#9FA52D", getResources().getString(R.string.course_page__course_desc) , getResources().getString(R.string.course_page__course_desc_2), 3));
+        courseList.add( new Course(3, "back_end", "Профессия Back-End\nразработчик", "25 Мая", "средний", "#4476D6", getResources().getString(R.string.course_page__course_desc) , getResources().getString(R.string.course_page__course_desc_2),2));
+        courseList.add( new Course(4, "front_end", "Профессия Front-End\nразработчик", "8 Июня", "начальный", "#F16A51", getResources().getString(R.string.course_page__course_desc) , getResources().getString(R.string.course_page__course_desc_2), 2));
+        courseList.add( new Course(5, "full_stack", "Профессия Full-Stack\nразработчик", "1 Сентября", "средний", "#0D0F29",getResources().getString(R.string.course_page__course_desc) , getResources().getString(R.string.course_page__course_desc_2), 2));
+        courseList.add( new Course(6, "unity", "Профессия Unity\nразработчик", "25 Ноября", "начальный", "#FD896A", getResources().getString(R.string.course_page__course_desc) , getResources().getString(R.string.course_page__course_desc_2),1));
 
         fullCoursesList.addAll(courseList);
 
@@ -63,6 +64,11 @@ public class MainActivity extends AppCompatActivity {
 
         courseAdapter = new CourseAdapter(this, courseList );
         courseRV.setAdapter(courseAdapter);
+    }
+
+    public void openCart(View view){
+        Intent intent = new Intent(this, OrderPage.class);
+        startActivity(intent);
     }
 
     private void setCategoryRV(List<Category> categoryList) {
