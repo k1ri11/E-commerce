@@ -1,77 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity_course_page"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/black"
     android:id="@+id/course_page__course_bg"
-    >
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/sidebar"
-        android:layout_width="65dp"
-        android:layout_height="0dp"
-        android:background="@color/AsideBgColor"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/main_sidebar_text"
-            android:layout_width="100dp"
-            android:layout_height="145dp"
-            android:fontFamily="@font/montserrat_bold"
-            android:gravity="center"
-            android:rotation="270"
-            android:text="@string/main_scene_text"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toTopOf="@id/about_sidebar_text"
-            app:layout_constraintEnd_toEndOf="@id/sidebar"
-            app:layout_constraintStart_toStartOf="@id/sidebar" />
-        <TextView
-            android:id="@+id/about_sidebar_text"
-            android:layout_width="100dp"
-            android:layout_height="145dp"
-            android:fontFamily="@font/montserrat"
-            android:gravity="center"
-            android:rotation="270"
-            android:text="@string/about_text"
-            android:textSize="20sp"
-            android:textColor="@color/black"
-            app:layout_constraintStart_toStartOf="@id/sidebar"
-            app:layout_constraintEnd_toEndOf="@id/sidebar"
-            app:layout_constraintTop_toBottomOf="@id/main_sidebar_text" />
-        <TextView
-            android:id="@+id/contacts_sidebar_text"
-            android:layout_width="100dp"
-            android:layout_height="145dp"
-            android:fontFamily="@font/montserrat"
-            android:gravity="center"
-            android:rotation="270"
-            android:layout_marginBottom="150dp"
-            android:text="@string/Contacts_text"
-            android:textSize="20sp"
-            android:textColor="@color/black"
-            app:layout_constraintStart_toStartOf="@id/sidebar"
-            app:layout_constraintEnd_toEndOf="@id/sidebar"
-            app:layout_constraintTop_toBottomOf="@id/about_sidebar_text"
-            app:layout_constraintBottom_toTopOf="@id/sidebar_icon"/>
-
-        <ImageView
-            android:id="@+id/sidebar_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:contentDescription="@string/sidebar_icon_description"
-            android:src="@drawable/ic_hot_deal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@id/sidebar"
-            app:layout_constraintStart_toStartOf="parent"/>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    tools:context=".model.CoursePageFragment">
 
     <ImageView
         android:id="@+id/course_page__course_img"
@@ -81,7 +16,7 @@
         android:scaleType="centerCrop"
         android:transitionName="courseImage"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/sidebar"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_java" />
 
@@ -97,7 +32,7 @@
         android:gravity="center"
         android:fontFamily="@font/montserrat_bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/sidebar"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/course_page__course_img"
         tools:text="Профессия Java разработчик" />
 
@@ -107,7 +42,7 @@
         android:layout_height="wrap_content"
         app:cardElevation="0dp"
         app:cardBackgroundColor="@android:color/transparent"
-        app:layout_constraintStart_toEndOf="@id/sidebar"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/course_page__title"
         app:layout_constraintEnd_toEndOf="parent">
 
@@ -183,7 +118,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@id/sidebar"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/card_bg"
         app:layout_constraintEnd_toEndOf="parent"
         android:fontFamily="@font/montserrat"
@@ -196,7 +131,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@id/sidebar"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/course_page_first_p"
         app:layout_constraintEnd_toEndOf="parent"
         android:fontFamily="@font/montserrat"
@@ -210,12 +145,10 @@
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
         android:contentDescription="@string/app_name"
-        android:onClick="addToCart"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/sidebar"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/course_page_second_p"
         app:srcCompat="@drawable/ic_shop" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,9 +1,7 @@
 package com.example.e_commerce.adapter;
 
-import android.app.Activity;
-import android.app.ActivityOptions;
+
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
 import android.util.Pair;
 import android.view.LayoutInflater;
@@ -13,14 +11,17 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.e_commerce.MainActivity;
 import com.example.e_commerce.R;
-import com.example.e_commerce.activity_course_page;
 import com.example.e_commerce.model.Course;
+import com.example.e_commerce.model.CoursePageFragment;
+import com.example.e_commerce.model.MainFragment;
 
 import java.util.List;
 
@@ -28,10 +29,12 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseView
 
     Context context;
     List<Course> courses;
+    private itemClickListener clickListener;
 
-    public CourseAdapter(Context context, List<Course> courses) {
+    public CourseAdapter(Context context, List<Course> courses, itemClickListener clickListener) {
         this.context = context;
         this.courses = courses;
+        this.clickListener = clickListener;
     }
 
     @NonNull
@@ -55,23 +58,30 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseView
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, activity_course_page.class);
+                clickListener.onItemClick(courses.get(position));
 
-                ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(
-                        (Activity)context,
-                        new Pair<View, String>(holder.courseImg, "courseImage")
-                );
+//                CoursePageFragment coursePageFragment = new CoursePageFragment();
+//                FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+//                fragmentTransaction.replace(R.id.fragment_main, coursePageFragment);
+//                fragmentTransaction.commit();
 
-                intent.putExtra("courseBg", (Color.parseColor(courses.get(position).getBgColor())));
-                intent.putExtra("courseImage", imageId);
-                intent.putExtra("courseTitle", courses.get(position).getTitle() );
-                intent.putExtra("courseDate", courses.get(position).getDate());
-                intent.putExtra("courseLevel", courses.get(position).getLevel());
-                intent.putExtra("courseText1", courses.get(position).getText1());
-                intent.putExtra("courseText2", courses.get(position).getText2());
-                intent.putExtra("courseId", courses.get(position).getId());
+//                Intent intent = new Intent(context, activity_course_page.class);
+//
+//                ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(
+//                        (Activity)context,
+//                        new Pair<View, String>(holder.courseImg, "courseImage")
+//                );
 
-                context.startActivity(intent, options.toBundle());
+//                intent.putExtra("courseBg", (Color.parseColor(courses.get(position).getBgColor())));
+//                intent.putExtra("courseImage", imageId);
+//                intent.putExtra("courseTitle", courses.get(position).getTitle() );
+//                intent.putExtra("courseDate", courses.get(position).getDate());
+//                intent.putExtra("courseLevel", courses.get(position).getLevel());
+//                intent.putExtra("courseText1", courses.get(position).getText1());
+//                intent.putExtra("courseText2", courses.get(position).getText2());
+//                intent.putExtra("courseId", courses.get(position).getId());
+//
+//                context.startActivity(intent, options.toBundle());
             }
         });
     }
@@ -80,6 +90,11 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseView
     public int getItemCount() {
         return courses.size();
     }
+
+    public interface itemClickListener{
+        void onItemClick(Course course);
+    }
+
 
     public static final class CourseViewHolder extends RecyclerView.ViewHolder{
 

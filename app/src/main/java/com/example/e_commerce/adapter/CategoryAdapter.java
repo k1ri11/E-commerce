@@ -9,9 +9,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.e_commerce.MainActivity;
 import com.example.e_commerce.R;
 import com.example.e_commerce.model.Category;
+import com.example.e_commerce.model.MainFragment;
 
 import java.util.List;
 
@@ -39,9 +39,8 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                MainActivity.showCoursesByCategory(categories.get(position).getId());
-                MainActivity.setTextColorClicked(v);
+                MainFragment.showCoursesByCategory(categories.get(position).getId());
+                MainFragment.setTextColorClicked(v);
             }
         });
     }
@@ -57,7 +56,6 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
 
         public CategoryViewHolder(@NonNull View itemView) {
             super(itemView);
-
             categoryTitle = itemView.findViewById(R.id.category_title);
         }
     }
