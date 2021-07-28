@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
         if (savedInstanceState == null) {
             MainFragment mainFragment = MainFragment.newInstance();
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.setReorderingAllowed(true);
             fragmentTransaction.replace(R.id.fragment_main, mainFragment, "mainFragment");
             fragmentTransaction.commitNow();
         }
@@ -26,6 +27,12 @@ public class MainActivity extends AppCompatActivity {
     public void toCart(View view) {
         OrderFragment orderFragment = new OrderFragment();
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.setReorderingAllowed(true);
+        fragmentTransaction.setCustomAnimations(
+                R.anim.from_right,
+                R.anim.to_left,
+                R.anim.from_left,
+                R.anim.to_right);
         fragmentTransaction.hide(this.getSupportFragmentManager().findFragmentByTag("mainFragment"));
         fragmentTransaction.add(R.id.fragment_main, orderFragment, null);
         fragmentTransaction.addToBackStack(null);

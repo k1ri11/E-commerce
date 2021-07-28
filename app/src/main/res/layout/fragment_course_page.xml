@@ -14,7 +14,7 @@
         android:layout_height="230dp"
         android:contentDescription="@string/product_icon_dscr"
         android:scaleType="centerCrop"
-        android:transitionName="courseImage"
+        android:transitionName="coursePageImage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

@@ -65,6 +65,7 @@ public class MainFragment extends Fragment implements CourseAdapter.itemClickLis
         return view;
     }
 
+
     @Override
     public void onItemClick(Course course){
         Fragment coursePageFragment = CoursePageFragment.newInstance(
@@ -72,6 +73,11 @@ public class MainFragment extends Fragment implements CourseAdapter.itemClickLis
                 course.getText2(), course.getImg(), course.getBgColor(), course.getId());
 
         FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.setCustomAnimations(
+                R.anim.from_left,
+                R.anim.to_right,
+                R.anim.from_right,
+                R.anim.to_left);
         fragmentTransaction.hide(getActivity().getSupportFragmentManager().findFragmentByTag("mainFragment"));
         fragmentTransaction.add(R.id.fragment_main, coursePageFragment, null);
         fragmentTransaction.addToBackStack(null);
