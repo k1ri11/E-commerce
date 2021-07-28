@@ -5,17 +5,20 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.e_commerce.R;
 import com.example.e_commerce.adapter.CategoryAdapter;
 import com.example.e_commerce.adapter.CourseAdapter;
+import com.google.android.material.internal.NavigationMenu;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,6 +65,14 @@ public class MainFragment extends Fragment implements CourseAdapter.itemClickLis
         CategoryRV = view.findViewById(R.id.category_rv);
         setCategoryRV(categoryList);
 
+        ImageView cartBtn = view.findViewById(R.id.button_cart);
+        cartBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(view).navigate(R.id.action_to_cart);
+            }
+        });
+
         return view;
     }
 
@@ -78,11 +89,13 @@ public class MainFragment extends Fragment implements CourseAdapter.itemClickLis
                 R.anim.to_right,
                 R.anim.from_right,
                 R.anim.to_left);
-        fragmentTransaction.hide(getActivity().getSupportFragmentManager().findFragmentByTag("mainFragment"));
+        fragmentTransaction.hide(getActivity().getSupportFragmentManager().findFragmentById(R.id.fragment_main));
         fragmentTransaction.add(R.id.fragment_main, coursePageFragment, null);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
+
+
 
     private void initCourseRv(View view){
         courseRV = view.findViewById(R.id.course_rv);
