@@ -1,13 +1,13 @@
 package com.example.e_commerce;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
+import androidx.navigation.ui.NavigationUI;
 
 import android.os.Bundle;
-import android.view.View;
 
-import com.example.e_commerce.model.MainFragment;
-import com.example.e_commerce.model.OrderFragment;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,13 +16,21 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        BottomNavigationView bottomNavigationView = findViewById(R.id.navigation_buttons);
+        NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_main);
+        NavController navController = navHostFragment.getNavController();
+        NavigationUI.setupWithNavController(bottomNavigationView, navController);
+        //            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+
+
+
 
 ////        if (savedInstanceState == null) {
 //            MainFragment mainFragment = MainFragment.newInstance();
 //            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-//            fragmentTransaction.setReorderingAllowed(true);
+//            fragmentTransaction.setReorderingAllowed(true);  //сортирует фрагменты в своем неведомом порядке (андроид)
 //            fragmentTransaction.replace(R.id.fragment_main, mainFragment, "mainFragment");
-//            fragmentTransaction.commitNow();
+//            fragmentTransaction.commitNow();   //коммитит в гланом потоке, сразу же
 ////        }
     }
 
@@ -37,14 +45,8 @@ public class MainActivity extends AppCompatActivity {
 //                R.anim.to_right);
 //        fragmentTransaction.hide(this.getSupportFragmentManager().findFragmentByTag("mainFragment"));
 //        fragmentTransaction.add(R.id.fragment_main, orderFragment, null);
-//        fragmentTransaction.addToBackStack(null);
+//        fragmentTransaction.addToBackStack(null);     // чтобы не выходить из приложения кнопкой назад
 //        fragmentTransaction.commit();
-//    }
-//    @Override
-//    public void onBackPressed() {
-//        if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
-//            getSupportFragmentManager().popBackStack();
-//        } else finish();
 //    }
 }
 

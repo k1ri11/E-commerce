@@ -3,25 +3,18 @@ package com.example.e_commerce.adapter;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.e_commerce.MainActivity;
 import com.example.e_commerce.R;
 import com.example.e_commerce.model.Course;
-import com.example.e_commerce.model.CoursePageFragment;
-import com.example.e_commerce.model.MainFragment;
 
 import java.util.List;
 

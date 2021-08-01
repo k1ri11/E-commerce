@@ -1,10 +1,8 @@
-package com.example.e_commerce.model;
+package com.example.e_commerce;
 
 import android.os.Bundle;
 
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.transition.TransitionInflater;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +12,10 @@ import android.widget.ImageButton;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
+import com.example.e_commerce.MainFragment;
 import com.example.e_commerce.R;
+import com.example.e_commerce.model.Course;
+import com.example.e_commerce.model.Order;
 
 import java.util.ArrayList;
 import java.util.List;

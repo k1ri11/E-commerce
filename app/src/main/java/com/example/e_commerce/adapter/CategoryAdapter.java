@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.e_commerce.R;
 import com.example.e_commerce.model.Category;
-import com.example.e_commerce.model.MainFragment;
+import com.example.e_commerce.MainFragment;
 
 import java.util.List;
 

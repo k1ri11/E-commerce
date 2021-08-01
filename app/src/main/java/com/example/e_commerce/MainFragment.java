@@ -1,24 +1,22 @@
-package com.example.e_commerce.model;
+package com.example.e_commerce;
 
 import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.e_commerce.R;
 import com.example.e_commerce.adapter.CategoryAdapter;
 import com.example.e_commerce.adapter.CourseAdapter;
-import com.google.android.material.internal.NavigationMenu;
+import com.example.e_commerce.model.Category;
+import com.example.e_commerce.model.Course;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,13 +63,13 @@ public class MainFragment extends Fragment implements CourseAdapter.itemClickLis
         CategoryRV = view.findViewById(R.id.category_rv);
         setCategoryRV(categoryList);
 
-        ImageView cartBtn = view.findViewById(R.id.button_cart);
-        cartBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.action_to_cart);
-            }
-        });
+//        ImageView cartBtn = view.findViewById(R.id.button_cart);
+//        cartBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Navigation.findNavController(view).navigate(R.id.action_to_cart);
+//            }
+//        });
 
         return view;
     }

@@ -1,10 +1,11 @@
-package com.example.e_commerce.model;
+package com.example.e_commerce;
 
 import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.e_commerce.R;
+import com.example.e_commerce.model.Order;
 
 
 public class CoursePageFragment extends Fragment {
@@ -99,6 +100,14 @@ public class CoursePageFragment extends Fragment {
                 Toast.makeText(getContext(), "Добавлено!", Toast.LENGTH_SHORT).show();
             }
         });
+
+//                ImageView cartBtn = view.findViewById(R.id.button_cart);
+//        cartBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Navigation.findNavController(view).navigate(R.id.action_to_cart);
+//            }
+//        });
 
         return view;
     }

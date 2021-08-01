@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/black"
     android:id="@+id/course_page__course_bg"
-    tools:context=".model.CoursePageFragment">
+    tools:context=".CoursePageFragment">
 
     <ImageView
         android:id="@+id/course_page__course_img"
