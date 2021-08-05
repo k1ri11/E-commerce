@@ -11,14 +11,15 @@
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" >
         <action
-            android:id="@+id/action_mainFragment_to_orderFragment"
-            app:destination="@id/orderFragment" />
-        <action
-            android:id="@+id/action_mainFragment_to_profileFragment"
-            app:destination="@id/profileFragment" />
-        <action
-            android:id="@+id/action_mainFragment_to_coursePageFragment"
-            app:destination="@id/coursePageFragment" />
+            android:id="@+id/to_course_page"
+            app:destination="@id/coursePageFragment"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"
+            app:launchSingleTop="false"
+            app:popEnterAnim="@anim/from_right"
+            app:popExitAnim="@anim/to_left"
+            app:popUpTo="@id/mainFragment"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/orderFragment"
@@ -35,11 +36,29 @@
         android:name="com.example.e_commerce.CoursePageFragment"
         android:label="fragment_course_page"
         tools:layout="@layout/fragment_course_page" >
-        <action
-            android:id="@+id/action_coursePageFragment_to_orderFragment"
-            app:destination="@id/orderFragment" />
-        <action
-            android:id="@+id/action_coursePageFragment_to_profileFragment"
-            app:destination="@id/profileFragment" />
+        <argument
+            android:name="Title"
+            app:argType="string" />
+        <argument
+            android:name="Date"
+            app:argType="string" />
+        <argument
+            android:name="Level"
+            app:argType="string" />
+        <argument
+            android:name="Text_1"
+            app:argType="string" />
+        <argument
+            android:name="Text_2"
+            app:argType="string" />
+        <argument
+            android:name="Image"
+            app:argType="string" />
+        <argument
+            android:name="BGColor"
+            app:argType="string" />
+        <argument
+            android:name="ItemID"
+            app:argType="integer" />
     </fragment>
 </navigation>

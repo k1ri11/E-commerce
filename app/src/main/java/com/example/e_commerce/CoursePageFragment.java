@@ -3,6 +3,7 @@ package com.example.e_commerce;
 import android.graphics.Color;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
@@ -19,60 +20,40 @@ import com.example.e_commerce.model.Order;
 
 
 public class CoursePageFragment extends Fragment {
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_DATE = "Date";
-    private static final String ARG_LEVEL = "Level";
-    private static final String ARG_TITLE = "Title";
-    private static final String ARG_TEXT_1 = "Text_1";
-    private static final String ARG_TEXT_2 = "Text_2";
-    private static final String ARG_BG_COLOR = "BGColor";
-    private static final String ARG_IMAGE = "Image";
-    private static final String ARG_ID = "Item_Id";
-
-    private String Date;
-    private String Level;
-    private String Title;
-    private String Text_1;
-    private String Text_2;
-    private String BGColor;
-    private String Image;
-    private int Item_Id;
-
-    public static CoursePageFragment newInstance(String Date, String Level, String Title, String Text_1,
-                                                 String Text_2, String Image, String BGColor, int Item_Id ) {
-        CoursePageFragment fragment = new CoursePageFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_DATE, Date);
-        args.putString(ARG_LEVEL, Level);
-        args.putString(ARG_TITLE, Title);
-        args.putString(ARG_TEXT_1, Text_1);
-        args.putString(ARG_TEXT_2, Text_2);
-        args.putString(ARG_BG_COLOR, BGColor);
-        args.putString(ARG_IMAGE, Image);
-        args.putInt(ARG_ID, Item_Id);
-        fragment.setArguments(args);
-        return fragment;
-    }
+//    private static final String ARG_DATE = "Date";
+//    private String Date;
+//    public static CoursePageFragment newInstance(String Date) {
+//        CoursePageFragment fragment = new CoursePageFragment();
+//        Bundle args = new Bundle();
+//        args.putString(ARG_DATE, Date);
+//        return fragment;
+//    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            Date = getArguments().getString(ARG_DATE);
-            Level = getArguments().getString(ARG_LEVEL);
-            Title = getArguments().getString(ARG_TITLE);
-            Text_1 = getArguments().getString(ARG_TEXT_1);
-            Text_2 = getArguments().getString(ARG_TEXT_2);
-            BGColor = getArguments().getString(ARG_BG_COLOR);
-            Image = getArguments().getString(ARG_IMAGE);
-            Item_Id = getArguments().getInt(ARG_ID);
-        }
+//        if (getArguments() != null) {
+//            Date = getArguments().getString(ARG_DATE);
+//        }
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_course_page, container, false);
+        return inflater.inflate(R.layout.fragment_course_page, container, false);
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+
+        int Item_Id = CoursePageFragmentArgs.fromBundle(getArguments()).getItemID();
+        String Title = CoursePageFragmentArgs.fromBundle(getArguments()).getTitle();
+        String Text_1 = CoursePageFragmentArgs.fromBundle(getArguments()).getText1();
+        String Text_2 = CoursePageFragmentArgs.fromBundle(getArguments()).getText2();
+        String Date = CoursePageFragmentArgs.fromBundle(getArguments()).getDate();
+        String Level = CoursePageFragmentArgs.fromBundle(getArguments()).getLevel();
+        String BGColor = CoursePageFragmentArgs.fromBundle(getArguments()).getBGColor();
+        String Image = CoursePageFragmentArgs.fromBundle(getArguments()).getImage();
 
         ConstraintLayout courseBG = view.findViewById(R.id.course_page__course_bg);
         ImageView courseImage = view.findViewById(R.id.course_page__course_img);
@@ -82,7 +63,6 @@ public class CoursePageFragment extends Fragment {
         TextView courseText1 = view.findViewById(R.id.course_page_first_p);
         TextView courseText2 = view.findViewById(R.id.course_page_second_p);
         ImageButton addBtn = view.findViewById(R.id.add_to_cart);
-
 
         courseDate.setText(Date);
         courseLevel.setText(Level);
@@ -100,15 +80,5 @@ public class CoursePageFragment extends Fragment {
                 Toast.makeText(getContext(), "Добавлено!", Toast.LENGTH_SHORT).show();
             }
         });
-
-//                ImageView cartBtn = view.findViewById(R.id.button_cart);
-//        cartBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Navigation.findNavController(view).navigate(R.id.action_to_cart);
-//            }
-//        });
-
-        return view;
     }
 }

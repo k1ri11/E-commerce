@@ -6,10 +6,13 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
+
+    NavController navController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.navigation_buttons);
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_main);
-        NavController navController = navHostFragment.getNavController();
+        navController = navHostFragment.getNavController();
         NavigationUI.setupWithNavController(bottomNavigationView, navController);
         //            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
 
@@ -34,20 +37,9 @@ public class MainActivity extends AppCompatActivity {
 ////        }
     }
 
-//    public void toCart(View view) {
-//        OrderFragment orderFragment = new OrderFragment();
-//        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-//        fragmentTransaction.setReorderingAllowed(true);
-//        fragmentTransaction.setCustomAnimations(
-//                R.anim.from_right,
-//                R.anim.to_left,
-//                R.anim.from_left,
-//                R.anim.to_right);
-//        fragmentTransaction.hide(this.getSupportFragmentManager().findFragmentByTag("mainFragment"));
-//        fragmentTransaction.add(R.id.fragment_main, orderFragment, null);
-//        fragmentTransaction.addToBackStack(null);     // чтобы не выходить из приложения кнопкой назад
-//        fragmentTransaction.commit();
-//    }
+    public void to_home(MenuItem item) {
+//        navController.popBackStack();
+    }
 }
 
 

@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -77,20 +78,26 @@ public class MainFragment extends Fragment implements CourseAdapter.itemClickLis
 
     @Override
     public void onItemClick(Course course){
-        Fragment coursePageFragment = CoursePageFragment.newInstance(
-                course.getDate(), course.getLevel(), course.getTitle(), course.getText1(),
-                course.getText2(), course.getImg(), course.getBgColor(), course.getId());
+        CoursePageFragment fragment = new CoursePageFragment();
+//                course.getDate(), course.getLevel(), course.getTitle(), course.getText1(),
+//                course.getText2(), course.getImg(), course.getBgColor(), course.getId());
 
-        FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.setCustomAnimations(
-                R.anim.from_left,
-                R.anim.to_right,
-                R.anim.from_right,
-                R.anim.to_left);
-        fragmentTransaction.hide(getActivity().getSupportFragmentManager().findFragmentById(R.id.fragment_main));
-        fragmentTransaction.add(R.id.fragment_main, coursePageFragment, null);
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commit();
+        MainFragmentDirections.ToCoursePage action = MainFragmentDirections.toCoursePage(course.getTitle(), course.getDate(), course.getLevel(),
+                course.getText1(), course.getText2(), course.getImg(), course.getBgColor(), course.getId());
+
+                Navigation.findNavController(getActivity(), R.id.fragment_main).navigate(action);
+
+
+//        FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+//        fragmentTransaction.setCustomAnimations(
+//                R.anim.from_left,
+//                R.anim.to_right,
+//                R.anim.from_right,
+//                R.anim.to_left);
+//        fragmentTransaction.hide(getActivity().getSupportFragmentManager().findFragmentById(R.id.fragment_main));
+//        fragmentTransaction.add(R.id.fragment_main, coursePageFragment, null);
+//        fragmentTransaction.addToBackStack(null);
+//        fragmentTransaction.commit();
     }
 
 
