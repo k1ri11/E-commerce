@@ -3,12 +3,15 @@ package com.example.e_commerce;
 import android.graphics.Color;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,16 +22,16 @@ import com.example.e_commerce.adapter.CourseAdapter;
 import com.example.e_commerce.model.Category;
 import com.example.e_commerce.model.Course;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import static android.content.ContentValues.TAG;
 
 
 public class MainFragment extends Fragment implements CourseAdapter.itemClickListener {
 
-    public static MainFragment newInstance() {
-        MainFragment fragment = new MainFragment();
-        return fragment;
-    }
 
     RecyclerView CategoryRV, courseRV;
     CategoryAdapter categoryAdapter;
@@ -40,37 +43,39 @@ public class MainFragment extends Fragment implements CourseAdapter.itemClickLis
     static View previousClick = null;
 
     @Override
+    public void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        if (categoryList.isEmpty() && courseList.isEmpty()) {
+            categoryList.add(new Category(0, "Все"));
+            categoryList.add(new Category(1, "Игры"));
+            categoryList.add(new Category(2, "Сайты"));
+            categoryList.add(new Category(3, "Языки"));
+            categoryList.add(new Category(4, "Прочее"));
+
+            courseList.add(new Course(1, "java", "Профессия Java\nразработчик", "1 Января", "начальный", "#424345", getResources().getString(R.string.course_page__course_desc), getResources().getString(R.string.course_page__course_desc_2), 3));
+            courseList.add(new Course(2, "python", "Профессия Python\nразработчик", "20 Февраля", "начальный", "#9FA52D", getResources().getString(R.string.course_page__course_desc), getResources().getString(R.string.course_page__course_desc_2), 3));
+            courseList.add(new Course(3, "back_end", "Профессия Back-End\nразработчик", "25 Мая", "средний", "#4476D6", getResources().getString(R.string.course_page__course_desc), getResources().getString(R.string.course_page__course_desc_2), 2));
+            courseList.add(new Course(4, "front_end", "Профессия Front-End\nразработчик", "8 Июня", "начальный", "#F16A51", getResources().getString(R.string.course_page__course_desc), getResources().getString(R.string.course_page__course_desc_2), 2));
+            courseList.add(new Course(5, "full_stack", "Профессия Full-Stack\nразработчик", "1 Сентября", "средний", "#0D0F29", getResources().getString(R.string.course_page__course_desc), getResources().getString(R.string.course_page__course_desc_2), 2));
+            courseList.add(new Course(6, "unity", "Профессия Unity\nразработчик", "25 Ноября", "начальный", "#FD896A", getResources().getString(R.string.course_page__course_desc), getResources().getString(R.string.course_page__course_desc_2), 1));
+
+            fullCoursesList.addAll(courseList);
+        }
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-        categoryList.add( new Category(0,"Все"));
-        categoryList.add( new Category(1,"Игры"));
-        categoryList.add( new Category(2,"Сайты"));
-        categoryList.add( new Category(3,"Языки"));
-        categoryList.add( new Category(4,"Прочее"));
-
-        courseList.add( new Course(1, "java", "Профессия Java\nразработчик", "1 Января", "начальный", "#424345", getResources().getString(R.string.course_page__course_desc) , getResources().getString(R.string.course_page__course_desc_2), 3));
-        courseList.add( new Course(2, "python", "Профессия Python\nразработчик", "20 Февраля", "начальный", "#9FA52D", getResources().getString(R.string.course_page__course_desc) , getResources().getString(R.string.course_page__course_desc_2), 3));
-        courseList.add( new Course(3, "back_end", "Профессия Back-End\nразработчик", "25 Мая", "средний", "#4476D6", getResources().getString(R.string.course_page__course_desc) , getResources().getString(R.string.course_page__course_desc_2),2));
-        courseList.add( new Course(4, "front_end", "Профессия Front-End\nразработчик", "8 Июня", "начальный", "#F16A51", getResources().getString(R.string.course_page__course_desc) , getResources().getString(R.string.course_page__course_desc_2), 2));
-        courseList.add( new Course(5, "full_stack", "Профессия Full-Stack\nразработчик", "1 Сентября", "средний", "#0D0F29",getResources().getString(R.string.course_page__course_desc) , getResources().getString(R.string.course_page__course_desc_2), 2));
-        courseList.add( new Course(6, "unity", "Профессия Unity\nразработчик", "25 Ноября", "начальный", "#FD896A", getResources().getString(R.string.course_page__course_desc) , getResources().getString(R.string.course_page__course_desc_2),1));
-
-
-        fullCoursesList.addAll(courseList);
+        Log.d(TAG, "onCreateView: ");
+        
+        if (savedInstanceState != null)
+            Log.d(TAG, "onCreateView: not_null");
 
         View view = inflater.inflate(R.layout.fragment_main, container, false);
         initCourseRv(view);
 
         CategoryRV = view.findViewById(R.id.category_rv);
         setCategoryRV(categoryList);
-
-//        ImageView cartBtn = view.findViewById(R.id.button_cart);
-//        cartBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Navigation.findNavController(view).navigate(R.id.action_to_cart);
-//            }
-//        });
 
         return view;
     }
@@ -144,5 +149,30 @@ public class MainFragment extends Fragment implements CourseAdapter.itemClickLis
             categoryTitlePrevoius.setTextColor(Color.parseColor("#000000"));
         }
         previousClick = v;
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        Log.d(TAG, "onPause: ");
+    }
+
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        Log.d(TAG, "onStop: ");
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        Log.d(TAG, "onDestroyView: ");
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.d(TAG, "onDestroy: ");
     }
 }

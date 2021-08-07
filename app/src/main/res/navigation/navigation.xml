@@ -18,8 +18,7 @@
             app:launchSingleTop="false"
             app:popEnterAnim="@anim/from_right"
             app:popExitAnim="@anim/to_left"
-            app:popUpTo="@id/mainFragment"
-            app:popUpToInclusive="false" />
+            app:popUpTo="@id/mainFragment" />
     </fragment>
     <fragment
         android:id="@+id/orderFragment"
